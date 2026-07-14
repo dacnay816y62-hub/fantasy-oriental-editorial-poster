@@ -1,29 +1,109 @@
-# oriental-editorial-poster
+# Oriental Editorial Poster
 
-Codex skill for creating refined Chinese cultural, fantasy, and minimalist text-material editorial posters.
+一个面向 Codex 的中文视觉创作 skill，用于生成东方文化、幻想文字、文字创意极简、出版物封面和编辑式海报的创作流程。
 
-## Contents
+它不是“新中式海报”一键提示词，而是一套偏审美判断和构图方法的工作流：先分析主题与材料证据，再选择文字机制、留白比例、版式系统和图像生成方式，尽量避免红章、泼墨、伪古风、小字噪音和通用 AI 海报模板。
 
-- `SKILL.md` - main skill instructions.
-- `references/editorial-systems.md` - editorial layout systems and composition rules.
-- `references/fantasy-text-minimal.md` - sparse fantasy/text-material taste overlay.
-- `assets/reference-layouts/` - approved visual reference layouts.
-- `agents/openai.yaml` - agent metadata.
+## 适合做什么
 
-## Install
+- 中文文化主题海报、展览封面、出版物封面
+- 文字创意极简风格测试
+- 东方幻想、诗词、城市、器物、材料、人物、自然意象主题
+- 1 到 6 个关键词的快速批量出图
+- 需要“字和图互相改变”的标题视觉，而不是普通排版叠字
 
-Copy this folder into your Codex skills directory:
+## 核心审美
+
+- 一个强材料证据：石、纸、布、残叶、水线、器物边缘、建筑缝、光影等
+- 一个标题动作：投影、裁切、反射、轮廓、局部遮挡、测量、镂空、压印等
+- 一个清晰留白场：留白必须承担阅读、呼吸或结构作用
+- 一个小型干扰器：线、点、色条、边界、水痕、线头或局部痕迹
+- 中性色为主，只保留一个有效强调色
+- 禁止伪小字、二维码、随机印章、旅游宣传感和无来源的装饰纹理
+
+## 目录结构
+
+```text
+oriental-editorial-poster/
+├─ SKILL.md
+├─ agents/
+│  └─ openai.yaml
+├─ assets/
+│  └─ reference-layouts/
+└─ references/
+   ├─ editorial-systems.md
+   └─ fantasy-text-minimal.md
+```
+
+## 安装
+
+把整个文件夹复制到 Codex skills 目录：
 
 ```text
 <CODEX_HOME>/skills/oriental-editorial-poster
 ```
 
-Then start a new Codex task and call:
+如果你不知道 `CODEX_HOME` 在哪里，常见位置是：
+
+```text
+C:\Users\<你的用户名>\.codex\skills\oriental-editorial-poster
+```
+
+复制后新开一个 Codex 任务，就可以直接调用：
 
 ```text
 $oriental-editorial-poster
 ```
 
-## Notes
+## 使用示例
 
-This skill expects an image-generation backend to be available in the host environment. It does not include API keys or provider credentials.
+```text
+$oriental-editorial-poster
+关键词：残荷
+做一张文字创意极简海报，3:4 竖版。
+```
+
+```text
+$oriental-editorial-poster
+主题：李白
+不要旅游海报感，不要大水墨。做成一本文学杂志封面，标题和月光/纸页/酒痕发生关系。
+```
+
+```text
+$oriental-editorial-poster
+关键词：琵琶、太湖石、大雁塔、北京、厦门、AI
+每个主题各做一张，风格要分开，不要重复同一种大字构图。
+```
+
+## 生成模式
+
+这个 skill 默认要求使用图像生成作为生产步骤。
+
+- **Mode A：直接图像海报**  
+  适合短标题、幻想文字、强图文融合、单张创意测试。
+
+- **Mode B：图像生成式海报版面**  
+  适合更稳的出版物封面、多字标题、城市/文化/展览主题。整体仍由图像生成完成，但标题区更清楚、版式更像真实封面。
+
+如果当前 Codex 环境没有内置图像生成工具，也没有可用 API 后端，这个 skill 只能先产出高质量提示词和构图方案，不能假装已经出图。
+
+## 重要文件
+
+- `SKILL.md`  
+  主工作流，定义触发条件、生产模式、构图门槛和最终质量检查。
+
+- `references/editorial-systems.md`  
+  编辑式海报的版式系统参考。
+
+- `references/fantasy-text-minimal.md`  
+  面向“文字创意极简”和用户筛选出的优秀样张整理出的审美覆盖层。
+
+- `assets/reference-layouts/`  
+  用于理解版式气质的参考图，不应被逐像素复制。
+
+## 注意
+
+- 本仓库不包含 API key、账号信息或图像生成额度。
+- 参考图用于学习视觉语法，不代表可商用授权。
+- 如果要作为公开 skill 分发，建议保留原文件结构，不要把过程稿、生成图片或临时输出放进仓库。
+
