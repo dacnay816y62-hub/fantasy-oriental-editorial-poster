@@ -1,4 +1,4 @@
-# Oriental Editorial Poster v2
+东方极简海报
 
 抖音：梵想美学
 
